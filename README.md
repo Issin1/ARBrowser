@@ -5,6 +5,10 @@
 这次开发一个通过手势识别模型来进行交互的AR应用，可以通过手势控制页面的翻滚。
 ![](README/gifhome_640x480_5s.gif)
 
+参考了https://heartbeat.fritz.ai/building-a-gesture-based-interface-ios-app-with-core-ml-and-arkit-910b5c94da80
+
+
+
 ## 项目准备
 新建项目时仍然选择Argumented Reality App
 之前App开发把主要的功能都放在了ViewController.swift中，导致单个文件过大，不够整洁，这次我们将AR和ML两个功能的函数分别放到ViewController+AR.swift和ViewController+ML.swift中。
