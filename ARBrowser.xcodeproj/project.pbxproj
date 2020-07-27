@@ -13,6 +13,9 @@
 		A0F725BB24CE5FED0064A1FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F725B924CE5FED0064A1FD /* Main.storyboard */; };
 		A0F725BD24CE5FF00064A1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F725BC24CE5FF00064A1FD /* Assets.xcassets */; };
 		A0F725C024CE5FF00064A1FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F725BE24CE5FF00064A1FD /* LaunchScreen.storyboard */; };
+		A0F725C824CE60780064A1FD /* ViewController+AR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F725C724CE60780064A1FD /* ViewController+AR.swift */; };
+		A0F725CA24CE60C90064A1FD /* ViewController+ML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F725C924CE60C90064A1FD /* ViewController+ML.swift */; };
+		A0F725CC24CEC0250064A1FD /* example_5s0_hand_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A0F725CB24CEC0240064A1FD /* example_5s0_hand_model.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		A0F725BC24CE5FF00064A1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F725BF24CE5FF00064A1FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F725C124CE5FF00064A1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0F725C724CE60780064A1FD /* ViewController+AR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+AR.swift"; sourceTree = "<group>"; };
+		A0F725C924CE60C90064A1FD /* ViewController+ML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ML.swift"; sourceTree = "<group>"; };
+		A0F725CB24CEC0240064A1FD /* example_5s0_hand_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = example_5s0_hand_model.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +62,12 @@
 		A0F725B224CE5FED0064A1FD /* ARBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				A0F725CB24CEC0240064A1FD /* example_5s0_hand_model.mlmodel */,
 				A0F725B324CE5FED0064A1FD /* AppDelegate.swift */,
 				A0F725B524CE5FED0064A1FD /* art.scnassets */,
 				A0F725B724CE5FED0064A1FD /* ViewController.swift */,
+				A0F725C724CE60780064A1FD /* ViewController+AR.swift */,
+				A0F725C924CE60C90064A1FD /* ViewController+ML.swift */,
 				A0F725B924CE5FED0064A1FD /* Main.storyboard */,
 				A0F725BC24CE5FF00064A1FD /* Assets.xcassets */,
 				A0F725BE24CE5FF00064A1FD /* LaunchScreen.storyboard */,
@@ -140,7 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F725B824CE5FED0064A1FD /* ViewController.swift in Sources */,
+				A0F725CC24CEC0250064A1FD /* example_5s0_hand_model.mlmodel in Sources */,
+				A0F725CA24CE60C90064A1FD /* ViewController+ML.swift in Sources */,
 				A0F725B424CE5FED0064A1FD /* AppDelegate.swift in Sources */,
+				A0F725C824CE60780064A1FD /* ViewController+AR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

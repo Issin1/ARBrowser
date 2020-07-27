@@ -7,12 +7,33 @@
 //
 
 import UIKit
-import SceneKit
 import ARKit
+import SceneKit
+import WebKit
+import Vision
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var sessionInfoLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    var planeNode: SCNNode!
+    let webView = UIWebView(frame: CGRect(x: 0, y: 0, width: 640, height: 480))
+    
+    let coreMLQueue = DispatchQueue.init(label: "cn.edu.nju.nemoworks.ARBrowser")
+    
+    lazy var request: VNCoreMLRequest = {
+        do {
+            let handModel = example_5s0_hand_model()
+            let model = try VNCoreMLModel(for:handModel.model)
+            var request = VNCoreMLRequest(model: model, completionHandler: self.processObservations)
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            fatalError("Failed to create VNCoreMLRequest")
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -32,44 +53,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.initAR()
+        self.coreMLQueue.async {
+            self.loopCoreML()
+        }
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
-        sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
-        sceneView.session.pause()
-    }
-
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        self.pauseAR()
     }
 }
